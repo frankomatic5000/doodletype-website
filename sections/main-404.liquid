@@ -1,0 +1,61 @@
+<section class="error-404">
+  <div class="container">
+    <div class="error-404__inner">
+      <p class="error-404__code">404</p>
+      <h1 class="error-404__heading">Weird. This page doesn't exist.</h1>
+      <p class="error-404__text">Maybe it ran away. Maybe it never existed. Either way — there's nothing here.</p>
+      <div class="error-404__actions">
+        <a href="{{ routes.root_url }}" class="btn btn--primary btn--large">Back Home</a>
+        <a href="{{ routes.collections_url }}/all" class="btn btn--ghost btn--large">Shop Characters</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .error-404 {
+    background: var(--color-black);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--header-height) + 40px) 24px 80px;
+    text-align: center;
+  }
+  .error-404__inner {
+    max-width: 560px;
+  }
+  .error-404__code {
+    font-family: var(--font-header);
+    font-size: clamp(6rem, 20vw, 12rem);
+    color: var(--color-red);
+    line-height: 1;
+    margin-bottom: 0;
+  }
+  .error-404__heading {
+    font-family: var(--font-header);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--color-white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .error-404__text {
+    color: rgba(255,255,255,0.5);
+    font-size: 1rem;
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+  .error-404__actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "404 Page",
+  "settings": []
+}
+{% endschema %}
