@@ -1,10 +1,7 @@
 {%- comment -%}
-  Renders a character card for a Shopify product.
+  Renders a character card.
+  Maps product title keywords to character illustration assets.
   Usage: {% render 'character-card', product: product, index: forloop.index %}
-
-  Tagline is extracted from product title after " - "
-  e.g. "Peter (pepper) - Fire" → tagline = "Fire"
-  Override by setting metafields.custom.tagline on the product.
 {%- endcomment -%}
 
 {%- assign card_tagline = product.metafields.custom.tagline -%}
@@ -17,29 +14,53 @@
 
 {%- assign card_name = product.title | split: ' - ' | first -%}
 
+{%- assign title_lower = product.title | downcase -%}
+{%- assign char_asset = nil -%}
+{%- if title_lower contains 'apple' or title_lower contains 'annabelle' -%}
+  {%- assign char_asset = 'Annabelle-Apple.png' -%}
+{%- elsif title_lower contains 'broccoli' or title_lower contains 'brian' -%}
+  {%- assign char_asset = 'Brian-Broccoli.png' -%}
+{%- elsif title_lower contains 'egg' or title_lower contains 'ethan' -%}
+  {%- assign char_asset = 'Ethan-Egg.png' -%}
+{%- elsif title_lower contains 'watermelon' or title_lower contains 'martin' -%}
+  {%- assign char_asset = 'Martin-Watermelon.png' -%}
+{%- elsif title_lower contains 'jelly' or title_lower contains 'jim' -%}
+  {%- assign char_asset = 'Jim-Jelly.png' -%}
+{%- elsif title_lower contains 'ice' or title_lower contains 'ian' -%}
+  {%- assign char_asset = 'Ian-Ice-Cube.png' -%}
+{%- elsif title_lower contains 'kiwi' or title_lower contains 'kiran' -%}
+  {%- assign char_asset = 'Kiran-Kiwi.png' -%}
+{%- elsif title_lower contains 'strawberry' or title_lower contains 'steve' -%}
+  {%- assign char_asset = 'Steve-Strawberry.png' -%}
+{%- elsif title_lower contains 'pepper' or title_lower contains 'peter' -%}
+  {%- assign char_asset = 'Peter-Pepper.png' -%}
+{%- endif -%}
+
 <div class="character-card fade-in" style="animation-delay: {{ index | times: 0.08 | default: 0 }}s">
-  <a href="{{ product.url }}" class="character-card__link" aria-label="Shop {{ product.title }}">
+  <a href="{{ product.url }}" class="character-card__link" aria-label="Shop {{ card_name }}">
     <div class="character-card__image-wrap">
-      {%- if product.featured_image -%}
+      {%- if char_asset -%}
         <img
-          src="{{ product.featured_image | image_url: width: 600 }}"
-          alt="{{ product.featured_image.alt | default: card_name }}"
+          src="{{ char_asset | asset_url }}"
+          alt="{{ card_name }}"
           class="character-card__image"
           loading="lazy"
-          width="600"
-          height="600"
+        >
+      {%- elsif product.featured_image -%}
+        <img
+          src="{{ product.featured_image | image_url: width: 600 }}"
+          alt="{{ card_name }}"
+          class="character-card__image"
+          loading="lazy"
         >
       {%- endif -%}
-
       <div class="character-card__overlay">
-        <span class="character-card__shop-badge">Shop Tee →</span>
+        <span class="character-card__shop-badge">Shop Tee &rarr;</span>
       </div>
-
       {%- unless product.available -%}
         <span class="product-card__sold-out-badge">Sold Out</span>
       {%- endunless -%}
     </div>
-
     <div class="character-card__info">
       <h3 class="character-card__name">{{ card_name }}</h3>
       {%- if card_tagline != blank -%}

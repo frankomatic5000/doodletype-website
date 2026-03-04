@@ -27,22 +27,19 @@
       </div>
     </div>
 
-    <!-- Right: Character Grid — pulls from live Shopify products -->
+    <!-- Right: Character Grid — hardcoded character illustrations -->
+    {%- assign hero_chars = 'Annabelle-Apple.png,Brian-Broccoli.png,Ethan-Egg.png,Martin-Watermelon.png,Jim-Jelly.png,Ian-Ice-Cube.png,Kiran-Kiwi.png,Steve-Strawberry.png,Peter-Pepper.png' | split: ',' -%}
+    {%- assign hero_names = 'Annabelle,Brian,Ethan,Martin,Jim,Ian,Kiran,Steve,Peter' | split: ',' -%}
     <div class="hero__grid fade-in fade-in--delay">
-      {%- assign hero_collection = collections['all'] -%}
-      {%- if hero_collection != blank and hero_collection.products.size > 0 -%}
-        {%- for product in hero_collection.products limit: 9 -%}
-          <a href="{{ product.url }}" class="hero__grid-item float-anim float-anim--{{ forloop.index }}">
-            {%- if product.featured_image -%}
-              <img
-                src="{{ product.featured_image | image_url: width: 400 }}"
-                alt="{{ product.featured_image.alt | default: product.title }}"
-                loading="{%- if forloop.index <= 3 -%}eager{%- else -%}lazy{%- endif -%}"
-              >
-            {%- endif -%}
-          </a>
-        {%- endfor -%}
-      {%- endif -%}
+      {%- for char_file in hero_chars -%}
+        <a href="/collections/all" class="hero__grid-item float-anim float-anim--{{ forloop.index }}">
+          <img
+            src="{{ char_file | asset_url }}"
+            alt="{{ hero_names[forloop.index0] }}"
+            loading="{%- if forloop.index <= 3 -%}eager{%- else -%}lazy{%- endif -%}"
+          >
+        </a>
+      {%- endfor -%}
     </div>
 
   </div>
