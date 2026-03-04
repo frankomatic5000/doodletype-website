@@ -1,0 +1,141 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "DoodleType",
+    "theme_version": "1.0.0",
+    "theme_author": "DoodleType",
+    "theme_documentation_url": "https://doodletype.com",
+    "theme_support_url": "https://doodletype.com"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_black",
+        "label": "Black",
+        "default": "#1a1a1a"
+      },
+      {
+        "type": "color",
+        "id": "color_white",
+        "label": "White",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_red",
+        "label": "Red (Accent)",
+        "default": "#ff3c3c"
+      },
+      {
+        "type": "color",
+        "id": "color_cream",
+        "label": "Cream",
+        "default": "#fafaf7"
+      },
+      {
+        "type": "color",
+        "id": "color_yellow",
+        "label": "Yellow",
+        "default": "#fff9c4"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "select",
+        "id": "font_header",
+        "label": "Header Font",
+        "options": [
+          { "value": "'Permanent Marker', cursive", "label": "Permanent Marker" },
+          { "value": "'Nunito', sans-serif", "label": "Nunito" }
+        ],
+        "default": "'Permanent Marker', cursive"
+      },
+      {
+        "type": "select",
+        "id": "font_body",
+        "label": "Body Font",
+        "options": [
+          { "value": "'Nunito', sans-serif", "label": "Nunito" },
+          { "value": "'Permanent Marker', cursive", "label": "Permanent Marker" }
+        ],
+        "default": "'Nunito', sans-serif"
+      }
+    ]
+  },
+  {
+    "name": "Social Links",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "TikTok URL",
+        "placeholder": "https://tiktok.com/@doodletype"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "Instagram URL",
+        "placeholder": "https://instagram.com/doodletype"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest",
+        "label": "Pinterest URL",
+        "placeholder": "https://pinterest.com/doodletype"
+      }
+    ]
+  },
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo Image"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 50,
+        "max": 300,
+        "step": 10,
+        "unit": "px",
+        "label": "Logo Width",
+        "default": 140
+      },
+      {
+        "type": "text",
+        "id": "cta_text",
+        "label": "CTA Button Text",
+        "default": "Shop Now"
+      },
+      {
+        "type": "url",
+        "id": "cta_url",
+        "label": "CTA Button URL"
+      }
+    ]
+  },
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "footer_about",
+        "label": "Footer About Text",
+        "default": "<p>A brand born from doodles, attitude, and a 12-year-old's imagination. Wear your weird.</p>"
+      },
+      {
+        "type": "text",
+        "id": "footer_copyright",
+        "label": "Copyright Text",
+        "default": "© 2024 DoodleType. All rights reserved."
+      }
+    ]
+  }
+]

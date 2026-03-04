@@ -1,0 +1,136 @@
+<section class="cart-page">
+  <div class="container">
+    <h1 class="cart-page__title">Your Cart</h1>
+
+    {%- if cart.item_count > 0 -%}
+      <form action="{{ routes.cart_url }}" method="post" id="cart-form">
+        <div class="cart-page__inner">
+
+          <!-- Cart Items -->
+          <div class="cart-page__items">
+            {%- for item in cart.items -%}
+              <div class="cart-item" data-key="{{ item.key }}">
+                <div class="cart-item__image">
+                  {%- if item.image -%}
+                    <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title }}" loading="lazy">
+                  {%- endif -%}
+                </div>
+                <div class="cart-item__details">
+                  <h3 class="cart-item__title">
+                    <a href="{{ item.url }}">{{ item.product_title }}</a>
+                  </h3>
+                  {%- if item.variant_title != 'Default Title' -%}
+                    <p class="cart-item__variant">{{ item.variant_title }}</p>
+                  {%- endif -%}
+                  <div class="cart-item__quantity-price">
+                    <div class="quantity-selector">
+                      <button type="button" class="quantity-btn" data-key="{{ item.key }}" data-action="decrease">−</button>
+                      <input
+                        type="number"
+                        name="updates[]"
+                        value="{{ item.quantity }}"
+                        min="0"
+                        data-key="{{ item.key }}"
+                        class="quantity-input cart-item__qty"
+                      >
+                      <button type="button" class="quantity-btn" data-key="{{ item.key }}" data-action="increase">+</button>
+                    </div>
+                    <span class="cart-item__price">{{ item.final_line_price | money }}</span>
+                  </div>
+                  <button type="button" class="cart-item__remove" data-key="{{ item.key }}">Remove</button>
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+
+          <!-- Cart Summary -->
+          <div class="cart-page__summary">
+            <div class="cart-summary">
+              <h2 class="cart-summary__title">Order Summary</h2>
+              <div class="cart-summary__row">
+                <span>Subtotal</span>
+                <span>{{ cart.total_price | money }}</span>
+              </div>
+              <div class="cart-summary__row cart-summary__row--shipping">
+                <span>Shipping</span>
+                <span>Calculated at checkout</span>
+              </div>
+              {%- if cart.cart_level_discount_applications.size > 0 -%}
+                {%- for discount in cart.cart_level_discount_applications -%}
+                  <div class="cart-summary__row cart-summary__row--discount">
+                    <span>{{ discount.title }}</span>
+                    <span>−{{ discount.total_allocated_amount | money }}</span>
+                  </div>
+                {%- endfor -%}
+              {%- endif -%}
+              <div class="cart-summary__divider"></div>
+              <div class="cart-summary__row cart-summary__row--total">
+                <span>Total</span>
+                <span>{{ cart.total_price | money }}</span>
+              </div>
+              <button type="submit" name="checkout" class="btn btn--primary btn--full btn--large cart-summary__checkout">
+                Checkout →
+              </button>
+              <a href="{{ routes.collections_url }}/all" class="cart-summary__continue">← Keep Shopping</a>
+            </div>
+          </div>
+
+        </div>
+      </form>
+    {%- else -%}
+      <div class="cart-empty">
+        <div class="cart-empty__icon">🛒</div>
+        <h2>Your cart is empty</h2>
+        <p>Looks like you haven't found your character yet.</p>
+        <a href="{{ routes.collections_url }}/all" class="btn btn--primary btn--large">Shop All Characters</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Cart quantity updates
+    document.querySelectorAll('.cart-item__qty').forEach(input => {
+      input.addEventListener('change', function() {
+        updateCartItem(this.dataset.key, parseInt(this.value));
+      });
+    });
+
+    document.querySelectorAll('.quantity-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const key = this.dataset.key;
+        const input = document.querySelector(`.cart-item__qty[data-key="${key}"]`);
+        if (!input) return;
+        let val = parseInt(input.value);
+        if (this.dataset.action === 'increase') val++;
+        if (this.dataset.action === 'decrease') val = Math.max(0, val - 1);
+        input.value = val;
+        updateCartItem(key, val);
+      });
+    });
+
+    document.querySelectorAll('.cart-item__remove').forEach(btn => {
+      btn.addEventListener('click', function() {
+        updateCartItem(this.dataset.key, 0);
+      });
+    });
+
+    function updateCartItem(key, quantity) {
+      fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: key, quantity: quantity })
+      })
+      .then(res => res.json())
+      .then(() => window.location.reload());
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Cart",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,49 @@
+<section class="collection-products">
+  <div class="container">
+    {%- if collection.products.size > 0 -%}
+      <div class="product-grid">
+        {%- for product in collection.products -%}
+          {%- render 'product-card', product: product -%}
+        {%- endfor -%}
+      </div>
+
+      {%- if paginate.pages > 1 -%}
+        <div class="pagination">
+          {{ paginate | default_pagination | replace: '&laquo; Previous', '← Prev' | replace: 'Next &raquo;', 'Next →' }}
+        </div>
+      {%- endif -%}
+
+    {%- else -%}
+      <div class="collection-empty">
+        <p>No characters here yet. Check back soon.</p>
+        <a href="{{ routes.root_url }}" class="btn btn--primary">Back Home</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Products",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_row",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "label": "Products per row",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 6,
+      "max": 24,
+      "step": 3,
+      "label": "Products per page",
+      "default": 9
+    }
+  ]
+}
+{% endschema %}

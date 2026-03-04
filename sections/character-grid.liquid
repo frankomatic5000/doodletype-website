@@ -1,0 +1,86 @@
+<section class="character-grid-section" id="characters">
+  <div class="container">
+    {%- if section.settings.heading != blank -%}
+      <div class="section-header fade-in">
+        <h2 class="section-heading">{{ section.settings.heading }}</h2>
+        {%- if section.settings.subheading != blank -%}
+          <p class="section-subheading">{{ section.settings.subheading }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- assign grid_collection = collections['all'] -%}
+    {%- assign grid_limit = section.settings.limit | default: 9 -%}
+
+    {%- if grid_collection != blank and grid_collection.products.size > 0 -%}
+      <div class="character-grid">
+        {%- for product in grid_collection.products limit: grid_limit -%}
+          {%- render 'character-card', product: product, index: forloop.index -%}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="character-grid-empty">
+        <p>Characters coming soon.</p>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.show_cta -%}
+      <div class="section-cta fade-in">
+        <a href="{{ section.settings.cta_url | default: '/collections/all' }}" class="btn btn--primary btn--large">
+          {{ section.settings.cta_text | default: 'View All Characters' }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Character Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Meet the Characters"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Section Subheading",
+      "default": "9 weirdos. 9 tees. Pick your person."
+    },
+    {
+      "type": "range",
+      "id": "limit",
+      "min": 3,
+      "max": 9,
+      "step": 3,
+      "label": "Number of Characters to Show",
+      "default": 9
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cta",
+      "label": "Show CTA Button",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "View All Characters"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Character Grid"
+    }
+  ]
+}
+{% endschema %}

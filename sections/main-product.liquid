@@ -1,0 +1,260 @@
+<section class="product-page">
+  <div class="container">
+    <div class="product-page__inner">
+
+      <!-- Left: Product Gallery -->
+      <div class="product-gallery fade-in">
+        {%- if product.images.size > 0 -%}
+          <div class="product-gallery__main">
+            <img
+              id="product-main-image"
+              src="{{ product.featured_image | image_url: width: 800 }}"
+              alt="{{ product.featured_image.alt | default: product.title }}"
+              width="800"
+              loading="eager"
+              class="product-gallery__image"
+            >
+          </div>
+          {%- if product.images.size > 1 -%}
+            <div class="product-gallery__thumbs">
+              {%- for image in product.images -%}
+                <button class="product-gallery__thumb {%- if forloop.first %} active{%- endif -%}" data-image="{{ image | image_url: width: 800 }}">
+                  <img src="{{ image | image_url: width: 120 }}" alt="{{ image.alt | default: product.title }}" loading="lazy">
+                </button>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        {%- else -%}
+          <div class="product-gallery__placeholder">
+            <img src="{{ product.title | handleize | append: '.png' | asset_url }}" alt="{{ product.title }}" loading="eager">
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Right: Product Info -->
+      <div class="product-info fade-in fade-in--delay">
+        {%- if section.settings.show_vendor and product.vendor != blank -%}
+          <p class="product-info__vendor">{{ product.vendor }}</p>
+        {%- endif -%}
+
+        <h1 class="product-info__title">{{ product.title }}</h1>
+
+        {%- assign taglines = "The holder of infinite things (in her purse),Mad at everything. Still nutritious.,EEEEEEEEHHHHHHHHHHg,Hates everything besides summer,Great grape jam Jim,brrrr so cold,He's from New Zealand,Everyone's favorite flavor growing up,fire" | split: ',' -%}
+        {%- assign char_handles = 'annabelle-apple,brian-broccoli,ethan-egg,martin-watermelon,jim-jelly,ian-ice-cube,kiran-kiwi,steve-strawberry,peter-pepper' | split: ',' -%}
+        {%- assign char_index = char_handles | index: product.handle -%}
+        {%- if char_index -%}
+          <p class="product-info__tagline">"{{ taglines[char_index] }}"</p>
+        {%- elsif product.metafields.custom.tagline != blank -%}
+          <p class="product-info__tagline">"{{ product.metafields.custom.tagline }}"</p>
+        {%- endif -%}
+
+        <div class="product-info__price">
+          {%- if product.compare_at_price > product.price -%}
+            <span class="product-info__compare-price">{{ product.compare_at_price | money }}</span>
+          {%- endif -%}
+          <span class="product-info__current-price">{{ product.price | money }}</span>
+          {%- if product.compare_at_price > product.price -%}
+            <span class="product-info__badge product-info__badge--sale">SALE</span>
+          {%- endif -%}
+        </div>
+
+        {%- if product.description != blank -%}
+          <div class="product-info__description">{{ product.description }}</div>
+        {%- endif -%}
+
+        <form action="{{ routes.cart_add_url }}" method="post" id="product-form" class="product-form">
+          <input type="hidden" name="form_type" value="product">
+          <input type="hidden" name="utf8" value="✓">
+
+          {%- for option in product.options_with_values -%}
+            <div class="product-form__option">
+              <label class="product-form__option-label">
+                {{ option.name }}
+                {%- if option.name == 'Size' -%}
+                  <a href="/pages/sizing-guide" class="product-form__size-guide">Size Guide</a>
+                {%- endif -%}
+              </label>
+              <div class="product-form__option-values">
+                {%- for value in option.values -%}
+                  <label class="product-form__swatch">
+                    <input
+                      type="radio"
+                      name="options[{{ option.name | escape }}]"
+                      value="{{ value | escape }}"
+                      {%- if option.selected_value == value %} checked{%- endif -%}
+                    >
+                    <span class="product-form__swatch-label">{{ value }}</span>
+                  </label>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endfor -%}
+
+          <select name="id" id="product-select" class="product-form__variant-select visually-hidden">
+            {%- for variant in product.variants -%}
+              <option
+                value="{{ variant.id }}"
+                {%- unless variant.available %} disabled{%- endunless -%}
+                {%- if variant == product.selected_or_first_available_variant %} selected{%- endif -%}
+              >
+                {{ variant.title }} – {{ variant.price | money }}
+              </option>
+            {%- endfor -%}
+          </select>
+
+          {%- if section.settings.show_quantity_selector -%}
+            <div class="product-form__quantity">
+              <label for="quantity">Quantity</label>
+              <div class="quantity-selector">
+                <button type="button" class="quantity-btn" data-action="decrease" aria-label="Decrease quantity">−</button>
+                <input type="number" id="quantity" name="quantity" value="1" min="1" max="10" class="quantity-input">
+                <button type="button" class="quantity-btn" data-action="increase" aria-label="Increase quantity">+</button>
+              </div>
+            </div>
+          {%- endif -%}
+
+          <button
+            type="submit"
+            name="add"
+            class="btn btn--primary btn--large btn--full product-form__submit"
+            id="add-to-cart"
+            {%- unless product.selected_or_first_available_variant.available %} disabled{%- endunless -%}
+          >
+            {%- if product.selected_or_first_available_variant.available -%}
+              Add to Cart — {{ product.selected_or_first_available_variant.price | money }}
+            {%- else -%}
+              Sold Out
+            {%- endif -%}
+          </button>
+        </form>
+
+        <!-- Trust Badges -->
+        <div class="product-trust">
+          <div class="product-trust__item">
+            <span>✓</span> Free shipping over $50
+          </div>
+          <div class="product-trust__item">
+            <span>✓</span> 100% cotton, hand-printed
+          </div>
+          <div class="product-trust__item">
+            <span>✓</span> Easy 30-day returns
+          </div>
+        </div>
+
+        {%- if section.settings.show_share_buttons -%}
+          <div class="product-share">
+            <span>Share this weirdo:</span>
+            <a href="https://twitter.com/intent/tweet?url={{ shop.url }}{{ product.url }}&text=Check out {{ product.title }} from @DoodleType — Wear Your Weird 🖍️" target="_blank" rel="noopener" aria-label="Share on Twitter">Twitter</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+          </div>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  // Product variant switching
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('product-form');
+    const select = document.getElementById('product-select');
+    const addToCartBtn = document.getElementById('add-to-cart');
+    const mainImage = document.getElementById('product-main-image');
+
+    if (!form || !select) return;
+
+    const variants = {{ product.variants | json }};
+
+    function getSelectedOptions() {
+      const options = {};
+      form.querySelectorAll('input[type="radio"]:checked').forEach(input => {
+        options[input.name] = input.value;
+      });
+      return options;
+    }
+
+    function findVariant(selectedOptions) {
+      return variants.find(variant => {
+        return variant.options.every((opt, idx) => {
+          return opt === selectedOptions[`options[${['Size', 'Color', 'Style'][idx]}]`] ||
+                 opt === Object.values(selectedOptions)[idx];
+        });
+      });
+    }
+
+    form.querySelectorAll('input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', function() {
+        const selectedOptions = getSelectedOptions();
+        const matchedVariant = variants.find(v => {
+          return v.title === Object.values(selectedOptions).join(' / ') ||
+                 v.options.join(' / ') === Object.values(selectedOptions).join(' / ');
+        });
+
+        if (matchedVariant) {
+          select.value = matchedVariant.id;
+          if (matchedVariant.available) {
+            addToCartBtn.disabled = false;
+            addToCartBtn.textContent = 'Add to Cart — ' + formatMoney(matchedVariant.price);
+          } else {
+            addToCartBtn.disabled = true;
+            addToCartBtn.textContent = 'Sold Out';
+          }
+          if (matchedVariant.featured_image && mainImage) {
+            mainImage.src = matchedVariant.featured_image.src;
+          }
+        }
+      });
+    });
+
+    function formatMoney(cents) {
+      return '$' + (cents / 100).toFixed(2);
+    }
+
+    // Gallery thumbnail switching
+    document.querySelectorAll('.product-gallery__thumb').forEach(thumb => {
+      thumb.addEventListener('click', function() {
+        document.querySelectorAll('.product-gallery__thumb').forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        if (mainImage) mainImage.src = this.dataset.image;
+      });
+    });
+
+    // Quantity selector
+    document.querySelectorAll('.quantity-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const input = document.querySelector('.quantity-input');
+        let val = parseInt(input.value);
+        if (this.dataset.action === 'increase') val = Math.min(val + 1, 10);
+        if (this.dataset.action === 'decrease') val = Math.max(val - 1, 1);
+        input.value = val;
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Show vendor",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quantity_selector",
+      "label": "Show quantity selector",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_share_buttons",
+      "label": "Show share buttons",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

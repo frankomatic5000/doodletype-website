@@ -1,0 +1,98 @@
+<section class="story-strip">
+  <div class="story-strip__inner">
+
+    <!-- Left: Red panel -->
+    <div class="story-strip__left fade-in">
+      <p class="story-strip__eyebrow">The Origin Story</p>
+      <h2 class="story-strip__heading">{{ section.settings.heading | default: 'The Story' }}</h2>
+      <p class="story-strip__text">
+        {{ section.settings.story_text | default: "DoodleType started as a notebook. A 12-year-old named Antonio just kept drawing characters — weird ones, funny ones, ones with way too much personality for a piece of paper. So we put them on tees. Now those doodles are a brand. Wear your weird." }}
+      </p>
+      <a href="{{ section.settings.cta_url | default: '/pages/about' }}" class="btn btn--ghost-white">
+        {{ section.settings.cta_text | default: 'Read More →' }}
+      </a>
+    </div>
+
+    <!-- Right: Cream panel with image/sketch frame -->
+    <div class="story-strip__right fade-in fade-in--delay">
+      <div class="story-strip__frame">
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 600 }}"
+            alt="{{ section.settings.image_caption | default: 'Antonio sketching' }}"
+            loading="lazy"
+          >
+        {%- else -%}
+          <div class="story-strip__placeholder">
+            <div class="story-strip__sketch-lines">
+              <div class="sketch-line"></div>
+              <div class="sketch-line"></div>
+              <div class="sketch-line sketch-line--short"></div>
+              <div class="sketch-circle"></div>
+              <div class="sketch-line sketch-line--short"></div>
+              <div class="sketch-line"></div>
+            </div>
+            <p class="story-strip__placeholder-text">Antonio's original sketches</p>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.image_caption != blank -%}
+          <p class="story-strip__caption">{{ section.settings.image_caption }}</p>
+        {%- endif -%}
+      </div>
+
+      <!-- Floating stat badge -->
+      <div class="story-strip__badge">
+        <span class="story-strip__badge-number">12</span>
+        <span class="story-strip__badge-label">years old &amp; already cooler than you</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Story Strip",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Story"
+    },
+    {
+      "type": "textarea",
+      "id": "story_text",
+      "label": "Story Text",
+      "default": "DoodleType started as a notebook. A 12-year-old named Antonio just kept drawing characters — weird ones, funny ones, ones with way too much personality for a piece of paper. So we put them on tees. Now those doodles are a brand. Wear your weird."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Read More →"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Story Image"
+    },
+    {
+      "type": "text",
+      "id": "image_caption",
+      "label": "Image Caption",
+      "default": "Antonio's original sketches"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story Strip"
+    }
+  ]
+}
+{% endschema %}

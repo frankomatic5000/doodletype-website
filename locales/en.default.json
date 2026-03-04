@@ -1,0 +1,174 @@
+{
+  "general": {
+    "password_page": {
+      "title": "Coming Soon — DoodleType",
+      "opening_soon": "Opening soon.",
+      "login_form_heading": "Enter password",
+      "password_placeholder": "Password",
+      "login_form_submit": "Enter",
+      "powered_by_shopify_html": "Powered by {{ shopify }}"
+    },
+    "meta": {
+      "tags": "Tagged {{ tags }}",
+      "page": "Page {{ page }}"
+    },
+    "breadcrumbs": {
+      "home": "Home"
+    }
+  },
+  "sections": {
+    "header": {
+      "navigation": "Navigation",
+      "menu": "Menu"
+    },
+    "footer": {
+      "overview": "Overview"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "quantity": {
+        "label": "Quantity",
+        "increase": "Increase quantity for {{ product }}",
+        "decrease": "Decrease quantity for {{ product }}"
+      },
+      "pick_variant": "Pick {{ option_name }}",
+      "sale": "Sale",
+      "on_sale": "On Sale",
+      "media": {
+        "gallery_viewer": "Gallery Viewer",
+        "open_media": "Open media {{ index }} in gallery view",
+        "pause": "Pause video: {{ title }}",
+        "play": "Play video: {{ title }}"
+      }
+    },
+    "facets": {
+      "filter_and_sort": "Filter and Sort",
+      "sort_by_label": "Sort by:",
+      "clear_all": "Clear all",
+      "filters": "Filters",
+      "active_filters": "Active filters"
+    }
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty",
+    "note": "Order note",
+    "note_placeholder": "Any special instructions?",
+    "estimated_total": "Estimated total",
+    "shipping_at_checkout": "Shipping &amp; taxes calculated at checkout",
+    "checkout": "Checkout",
+    "view_cart": "View cart",
+    "add": "Add",
+    "remove": "Remove",
+    "update": "Update",
+    "item": {
+      "quantity": "Quantity",
+      "price": "Price",
+      "subtotal": "Subtotal"
+    }
+  },
+  "collections": {
+    "general": {
+      "view_all": "View all",
+      "items_with_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      }
+    },
+    "sorting": {
+      "featured": "Featured",
+      "best_selling": "Best selling",
+      "title_ascending": "Alphabetically, A-Z",
+      "title_descending": "Alphabetically, Z-A",
+      "price_ascending": "Price, low to high",
+      "price_descending": "Price, high to low",
+      "created_ascending": "Date, old to new",
+      "created_descending": "Date, new to old"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "My Account",
+      "details": "Account Details",
+      "view_addresses": "View Addresses",
+      "return_to_account": "Return to Account"
+    },
+    "addresses": {
+      "title": "Your Addresses",
+      "default": "Default",
+      "add_new": "Add a New Address",
+      "edit_address": "Edit Address",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "company": "Company",
+      "address1": "Address 1",
+      "address2": "Address 2 (optional)",
+      "city": "City",
+      "country": "Country",
+      "province": "State / Province",
+      "zip": "ZIP / Postal Code",
+      "phone": "Phone",
+      "set_default": "Set as default address",
+      "add": "Add Address",
+      "update": "Update Address",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "delete_confirm": "Are you sure you wish to delete this address?"
+    },
+    "login": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "sign_in": "Sign In",
+      "forgot_password": "Forgot password?",
+      "guest": "Continue as guest",
+      "create_account": "Create account"
+    },
+    "register": {
+      "title": "Create Account",
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "email": "Email",
+      "password": "Password",
+      "submit": "Create Account"
+    },
+    "recover_password": {
+      "title": "Reset Password",
+      "subtext": "We will send you an email to reset your password.",
+      "email": "Email",
+      "submit": "Submit",
+      "cancel": "Cancel",
+      "success": "We've sent you an email with a link to update your password."
+    },
+    "order": {
+      "title": "Order {{ name }}",
+      "date": "Placed on {{ date }}",
+      "cancelled": "Order cancelled on {{ date }}",
+      "cancelled_reason": "Reason: {{ reason }}",
+      "billing_address": "Billing Address",
+      "payment_status": "Payment Status",
+      "shipping_address": "Shipping Address",
+      "fulfillment_status": "Fulfillment Status",
+      "discount": "Discount",
+      "shipping": "Shipping",
+      "tax": "Tax",
+      "total": "Total",
+      "none": "None"
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "close": "Close",
+    "open_menu": "Open menu",
+    "close_menu": "Close menu"
+  },
+  "layout": {
+    "footer": {
+      "social_platform": "{{ name }} — opens in a new window"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+<section class="email-signup">
+  <div class="container">
+    <div class="email-signup__inner fade-in">
+      <div class="email-signup__text">
+        <h2 class="email-signup__heading">{{ section.settings.heading | default: 'Get Early Access' }}</h2>
+        <p class="email-signup__subheading">{{ section.settings.subheading | default: 'New characters drop when they drop. Be first.' }}</p>
+      </div>
+      <form class="email-signup__form" action="/contact#contact_form" method="post" accept-charset="UTF-8" id="email-form">
+        <input type="hidden" name="form_type" value="customer">
+        <input type="hidden" name="utf8" value="✓">
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <div class="email-signup__input-group">
+          <input
+            type="email"
+            name="contact[email]"
+            id="email-input"
+            placeholder="{{ section.settings.placeholder | default: 'your@email.com' }}"
+            required
+            autocomplete="email"
+            class="email-signup__input"
+          >
+          <button type="submit" class="btn btn--black email-signup__btn">
+            {{ section.settings.button_text | default: "I'm In" }}
+          </button>
+        </div>
+        <p class="email-signup__disclaimer">No spam. Just drops. Unsubscribe anytime.</p>
+      </form>
+      <div class="email-signup__success" id="email-success" style="display:none">
+        <p>You're in. 🔥 Stay weird.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Email Signup",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Get Early Access"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "New characters drop when they drop. Be first."
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Input Placeholder",
+      "default": "your@email.com"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "I'm In"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Email Signup"
+    }
+  ]
+}
+{% endschema %}

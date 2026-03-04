@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>
+    {%- if page_title == blank -%}
+      {{ shop.name }}
+    {%- else -%}
+      {{ page_title }} – {{ shop.name }}
+    {%- endif -%}
+  </title>
+
+  {%- if page_description -%}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif -%}
+
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32 }}">
+  {%- endif -%}
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="{{ shop.name }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:title" content="{{ page_title | default: shop.name }}">
+  <meta property="og:type" content="website">
+  {%- if page_description -%}
+    <meta property="og:description" content="{{ page_description | escape }}">
+  {%- endif -%}
+  {%- if page_image -%}
+    <meta property="og:image" content="{{ page_image | image_url: width: 1200 }}">
+  {%- endif -%}
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Theme Stylesheet -->
+  {{ 'style.css' | asset_url | stylesheet_tag }}
+
+  <!-- Shopify required -->
+  {{ content_for_header }}
+
+  <!-- CSS Variables from theme settings -->
+  <style>
+    :root {
+      --color-black: {{ settings.color_black }};
+      --color-white: {{ settings.color_white }};
+      --color-red: {{ settings.color_red }};
+      --color-cream: {{ settings.color_cream }};
+      --color-yellow: {{ settings.color_yellow }};
+      --font-header: {{ settings.font_header }};
+      --font-body: {{ settings.font_body }};
+    }
+  </style>
+</head>
+
+<body class="template-{{ template.name }}">
+
+  <!-- Skip to content -->
+  <a class="skip-to-content" href="#MainContent">Skip to content</a>
+
+  <!-- Header -->
+  {%- section 'header' -%}
+
+  <!-- Main Content -->
+  <main id="MainContent" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  <!-- Footer -->
+  {%- section 'footer' -%}
+
+  <!-- Cart Drawer -->
+  <div id="cart-drawer" class="cart-drawer" aria-hidden="true">
+    <div class="cart-drawer__overlay"></div>
+    <div class="cart-drawer__inner">
+      <div class="cart-drawer__header">
+        <h2 class="cart-drawer__title">Your Cart</h2>
+        <button class="cart-drawer__close" aria-label="Close cart">&times;</button>
+      </div>
+      <div class="cart-drawer__body" id="cart-drawer-body">
+        <!-- Populated by JS -->
+      </div>
+      <div class="cart-drawer__footer">
+        <div class="cart-drawer__subtotal">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">$0.00</span>
+        </div>
+        <a href="/checkout" class="btn btn--primary btn--full">Checkout</a>
+        <a href="/cart" class="cart-drawer__view-cart">View full cart</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__overlay"></div>
+    <nav class="mobile-menu__nav">
+      <button class="mobile-menu__close" aria-label="Close menu">&times;</button>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/collections/all">Shop All</a></li>
+        <li><a href="/pages/about">About</a></li>
+        <li><a href="/pages/contact">Contact</a></li>
+      </ul>
+      <a href="/collections/all" class="btn btn--primary">Shop Now</a>
+    </nav>
+  </div>
+
+  <!-- Main JS -->
+  <script src="{{ 'main.js' | asset_url }}" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+{%- comment -%}
+  Renders a product card for collection grids.
+  Usage: {% render 'product-card', product: product %}
+
+  Tagline is extracted from product title after " - "
+  e.g. "Peter (pepper) - Fire" → tagline = "Fire"
+  Override by setting metafields.custom.tagline on the product.
+{%- endcomment -%}
+
+{%- assign card_tagline = product.metafields.custom.tagline -%}
+{%- if card_tagline == blank -%}
+  {%- assign title_parts = product.title | split: ' - ' -%}
+  {%- if title_parts.size > 1 -%}
+    {%- assign card_tagline = title_parts | last -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- assign card_name = product.title | split: ' - ' | first -%}
+
+<div class="product-card">
+  <a href="{{ product.url }}" aria-label="{{ product.title }}">
+    <div class="product-card__image-wrap">
+      {%- if product.featured_image -%}
+        <img
+          src="{{ product.featured_image | image_url: width: 600 }}"
+          alt="{{ product.featured_image.alt | default: card_name }}"
+          class="product-card__image"
+          loading="lazy"
+          width="600"
+          height="600"
+        >
+      {%- endif -%}
+
+      {%- unless product.available -%}
+        <span class="product-card__sold-out-badge">Sold Out</span>
+      {%- endunless -%}
+
+      {%- if product.compare_at_price > product.price -%}
+        <span class="product-card__sold-out-badge" style="background: var(--color-red);">SALE</span>
+      {%- endif -%}
+    </div>
+
+    <div class="product-card__info">
+      <h3 class="product-card__title">{{ card_name }}</h3>
+      {%- if card_tagline != blank -%}
+        <p class="product-card__tagline">"{{ card_tagline }}"</p>
+      {%- endif -%}
+      <div class="product-card__price-row">
+        <div>
+          {%- if product.compare_at_price > product.price -%}
+            <span class="product-card__compare-price">{{ product.compare_at_price | money }}</span>
+          {%- endif -%}
+          <span class="product-card__price">{{ product.price | money }}</span>
+        </div>
+        <span class="product-card__cta">Shop →</span>
+      </div>
+    </div>
+  </a>
+</div>

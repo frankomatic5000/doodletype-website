@@ -1,0 +1,67 @@
+<section class="about-strip">
+  <div class="about-strip__inner">
+    <div class="about-strip__stat fade-in">
+      <span class="about-strip__number">{{ section.settings.stat_1_number | default: '9' }}</span>
+      <span class="about-strip__label">{{ section.settings.stat_1_label | default: 'Characters' }}</span>
+    </div>
+    <div class="about-strip__divider"></div>
+    <div class="about-strip__stat fade-in" style="animation-delay: 0.15s">
+      <span class="about-strip__number">{{ section.settings.stat_2_number | default: '2' }}</span>
+      <span class="about-strip__label">{{ section.settings.stat_2_label | default: 'Colorways' }}</span>
+    </div>
+    <div class="about-strip__divider"></div>
+    <div class="about-strip__stat fade-in" style="animation-delay: 0.3s">
+      <span class="about-strip__number">{{ section.settings.stat_3_number | default: '∞' }}</span>
+      <span class="about-strip__label">{{ section.settings.stat_3_label | default: 'Personalities' }}</span>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Stats Strip",
+  "settings": [
+    {
+      "type": "text",
+      "id": "stat_1_number",
+      "label": "Stat 1 Number",
+      "default": "9"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Stat 1 Label",
+      "default": "Characters"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_number",
+      "label": "Stat 2 Number",
+      "default": "2"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Stat 2 Label",
+      "default": "Colorways"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_number",
+      "label": "Stat 3 Number",
+      "default": "∞"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Stat 3 Label",
+      "default": "Personalities"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stats Strip"
+    }
+  ]
+}
+{% endschema %}

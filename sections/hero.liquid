@@ -1,0 +1,91 @@
+<section class="hero" id="hero">
+  <div class="hero__inner">
+
+    <!-- Left: Text Content -->
+    <div class="hero__content fade-in">
+      <p class="hero__eyebrow">NEW DROPS. WEIRD CHARACTERS. BIG ATTITUDE.</p>
+      <h1 class="hero__headline">
+        {%- if section.settings.headline != blank -%}
+          {{ section.settings.headline }}
+        {%- else -%}
+          Wear Your<br>Weird.
+        {%- endif -%}
+      </h1>
+      <p class="hero__subheadline">
+        {{ section.settings.subheadline | default: "Characters with attitude. T-shirts with soul. Designed by a 12-year-old who doesn't care what you think." }}
+      </p>
+      <div class="hero__ctas">
+        <a href="{{ section.settings.cta_url | default: '/collections/all' }}" class="btn btn--primary btn--large">
+          {{ section.settings.cta_text | default: 'Shop the Collection' }}
+        </a>
+        <a href="#characters" class="btn btn--ghost btn--large">Meet the Characters</a>
+      </div>
+      <div class="hero__tags">
+        <span>#WearYourWeird</span>
+        <span>$29 each</span>
+        <span>Free shipping $50+</span>
+      </div>
+    </div>
+
+    <!-- Right: Character Grid — pulls from live Shopify products -->
+    <div class="hero__grid fade-in fade-in--delay">
+      {%- assign hero_collection = collections['all'] -%}
+      {%- if hero_collection != blank and hero_collection.products.size > 0 -%}
+        {%- for product in hero_collection.products limit: 9 -%}
+          <a href="{{ product.url }}" class="hero__grid-item float-anim float-anim--{{ forloop.index }}">
+            {%- if product.featured_image -%}
+              <img
+                src="{{ product.featured_image | image_url: width: 400 }}"
+                alt="{{ product.featured_image.alt | default: product.title }}"
+                loading="{%- if forloop.index <= 3 -%}eager{%- else -%}lazy{%- endif -%}"
+              >
+            {%- endif -%}
+          </a>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero__scroll-hint">
+    <span>Scroll</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Wear Your Weird."
+    },
+    {
+      "type": "textarea",
+      "id": "subheadline",
+      "label": "Subheadline",
+      "default": "Characters with attitude. T-shirts with soul. Designed by a 12-year-old who doesn't care what you think."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Primary CTA Text",
+      "default": "Shop the Collection"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Primary CTA URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

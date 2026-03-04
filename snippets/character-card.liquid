@@ -1,0 +1,51 @@
+{%- comment -%}
+  Renders a character card for a Shopify product.
+  Usage: {% render 'character-card', product: product, index: forloop.index %}
+
+  Tagline is extracted from product title after " - "
+  e.g. "Peter (pepper) - Fire" → tagline = "Fire"
+  Override by setting metafields.custom.tagline on the product.
+{%- endcomment -%}
+
+{%- assign card_tagline = product.metafields.custom.tagline -%}
+{%- if card_tagline == blank -%}
+  {%- assign title_parts = product.title | split: ' - ' -%}
+  {%- if title_parts.size > 1 -%}
+    {%- assign card_tagline = title_parts | last -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- assign card_name = product.title | split: ' - ' | first -%}
+
+<div class="character-card fade-in" style="animation-delay: {{ index | times: 0.08 | default: 0 }}s">
+  <a href="{{ product.url }}" class="character-card__link" aria-label="Shop {{ product.title }}">
+    <div class="character-card__image-wrap">
+      {%- if product.featured_image -%}
+        <img
+          src="{{ product.featured_image | image_url: width: 600 }}"
+          alt="{{ product.featured_image.alt | default: card_name }}"
+          class="character-card__image"
+          loading="lazy"
+          width="600"
+          height="600"
+        >
+      {%- endif -%}
+
+      <div class="character-card__overlay">
+        <span class="character-card__shop-badge">Shop Tee →</span>
+      </div>
+
+      {%- unless product.available -%}
+        <span class="product-card__sold-out-badge">Sold Out</span>
+      {%- endunless -%}
+    </div>
+
+    <div class="character-card__info">
+      <h3 class="character-card__name">{{ card_name }}</h3>
+      {%- if card_tagline != blank -%}
+        <p class="character-card__tagline">"{{ card_tagline }}"</p>
+      {%- endif -%}
+      <span class="character-card__price">{{ product.price | money }}</span>
+    </div>
+  </a>
+</div>

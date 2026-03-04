@@ -1,0 +1,37 @@
+<div class="marquee-section">
+  <div class="marquee-track" aria-hidden="true">
+    <div class="marquee-content">
+      <span>{{ section.settings.text }}</span>
+      <span>{{ section.settings.text }}</span>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Marquee Ticker",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Marquee Text",
+      "default": "WEAR YOUR WEIRD ✦ DOODLETYPE ✦ NEW DROPS ✦ ONLY $29 ✦ FREE SHIPPING OVER $50 ✦ WEAR YOUR WEIRD ✦ DOODLETYPE ✦ NEW DROPS ✦ ONLY $29 ✦ FREE SHIPPING OVER $50 ✦"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "label": "Animation Speed",
+      "default": 30
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee Ticker"
+    }
+  ]
+}
+{% endschema %}

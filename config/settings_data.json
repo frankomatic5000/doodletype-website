@@ -1,0 +1,18 @@
+{
+  "current": {
+    "color_black": "#1a1a1a",
+    "color_white": "#ffffff",
+    "color_red": "#ff3c3c",
+    "color_cream": "#fafaf7",
+    "color_yellow": "#fff9c4",
+    "font_header": "'Permanent Marker', cursive",
+    "font_body": "'Nunito', sans-serif",
+    "social_tiktok": "https://tiktok.com/@doodletype",
+    "social_instagram": "https://instagram.com/doodletype",
+    "social_pinterest": "https://pinterest.com/doodletype",
+    "logo_width": 140,
+    "cta_text": "Shop Now",
+    "footer_about": "<p>A brand born from doodles, attitude, and a 12-year-old's imagination. Wear your weird.</p>",
+    "footer_copyright": "© 2024 DoodleType. All rights reserved."
+  }
+}

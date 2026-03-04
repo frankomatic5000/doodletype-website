@@ -1,0 +1,31 @@
+{
+  "sections": {
+    "main-product": {
+      "type": "main-product",
+      "settings": {
+        "show_vendor": false,
+        "show_quantity_selector": true,
+        "show_share_buttons": true
+      }
+    },
+    "product-marquee": {
+      "type": "marquee",
+      "settings": {
+        "text": "FREE SHIPPING OVER $50 ✦ 100% COTTON ✦ HAND-DRAWN ART ✦ ORIGINAL DOODLETYPE DESIGNS ✦ FREE SHIPPING OVER $50 ✦ 100% COTTON ✦ HAND-DRAWN ART ✦ ORIGINAL DOODLETYPE DESIGNS ✦"
+      }
+    },
+    "related-characters": {
+      "type": "character-grid",
+      "settings": {
+        "heading": "More Characters",
+        "subheading": "Can't pick just one.",
+        "limit": 4
+      }
+    }
+  },
+  "order": [
+    "main-product",
+    "product-marquee",
+    "related-characters"
+  ]
+}

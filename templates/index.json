@@ -1,0 +1,79 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "headline": "Wear Your Weird.",
+        "subheadline": "Characters with attitude. T-shirts with soul. Designed by a 12-year-old who doesn't care what you think.",
+        "cta_text": "Shop the Collection",
+        "cta_url": "/collections/all"
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "settings": {
+        "text": "WEAR YOUR WEIRD ✦ DOODLETYPE ✦ NEW DROPS ✦ ONLY $29 ✦ FREE SHIPPING OVER $50 ✦ WEAR YOUR WEIRD ✦ DOODLETYPE ✦ NEW DROPS ✦ ONLY $29 ✦ FREE SHIPPING OVER $50 ✦"
+      }
+    },
+    "character-grid": {
+      "type": "character-grid",
+      "settings": {
+        "heading": "Meet the Characters",
+        "subheading": "9 weirdos. 9 tees. Pick your person."
+      }
+    },
+    "about-strip": {
+      "type": "about-strip",
+      "settings": {
+        "stat_1_number": "9",
+        "stat_1_label": "Characters",
+        "stat_2_number": "2",
+        "stat_2_label": "Colorways",
+        "stat_3_number": "∞",
+        "stat_3_label": "Personalities"
+      }
+    },
+    "marquee-2": {
+      "type": "marquee",
+      "settings": {
+        "text": "100% COTTON ✦ HAND-DRAWN ART ✦ ORIGINAL DESIGNS ✦ KIDS MAKING ART ✦ WEAR YOUR WEIRD ✦ 100% COTTON ✦ HAND-DRAWN ART ✦ ORIGINAL DESIGNS ✦ KIDS MAKING ART ✦"
+      }
+    },
+    "story-strip": {
+      "type": "story-strip",
+      "settings": {
+        "heading": "The Story",
+        "story_text": "DoodleType started as a notebook. A 12-year-old named Antonio just kept drawing characters — weird ones, funny ones, ones with way too much personality for a piece of paper. So we put them on tees. Now those doodles are a brand. Wear your weird.",
+        "image_caption": "Antonio's original sketches"
+      }
+    },
+    "shop-cta": {
+      "type": "shop-cta",
+      "settings": {
+        "heading": "Find Your Character.",
+        "subheading": "9 weirdos. 1 tee each. $29 and it's yours.",
+        "cta_text": "Shop All Characters",
+        "cta_url": "/collections/all"
+      }
+    },
+    "email-signup": {
+      "type": "email-signup",
+      "settings": {
+        "heading": "Get Early Access",
+        "subheading": "New characters drop when they drop. Be first.",
+        "placeholder": "your@email.com",
+        "button_text": "I'm In"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "marquee",
+    "character-grid",
+    "about-strip",
+    "marquee-2",
+    "story-strip",
+    "shop-cta",
+    "email-signup"
+  ]
+}

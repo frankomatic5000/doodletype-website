@@ -1,0 +1,92 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="footer__inner">
+
+    <!-- Column 1: Brand -->
+    <div class="footer__col footer__col--brand">
+      <a href="{{ routes.root_url }}" class="footer__logo" aria-label="{{ shop.name }}">
+        {{ shop.name }}
+      </a>
+      <div class="footer__about">
+        {{ section.settings.about_text | default: '<p>A brand born from doodles, attitude, and a 12-year-old\'s imagination. Wear your weird.</p>' }}
+      </div>
+      <div class="footer__social">
+        {%- if settings.social_tiktok != blank -%}
+          <a href="{{ settings.social_tiktok }}" class="footer__social-link" aria-label="TikTok" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.31 6.31 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.67a8.17 8.17 0 004.78 1.52V6.73a4.85 4.85 0 01-1.01-.04z"/>
+            </svg>
+            TikTok
+          </a>
+        {%- endif -%}
+        {%- if settings.social_instagram != blank -%}
+          <a href="{{ settings.social_instagram }}" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+            Instagram
+          </a>
+        {%- endif -%}
+        {%- if settings.social_pinterest != blank -%}
+          <a href="{{ settings.social_pinterest }}" class="footer__social-link" aria-label="Pinterest" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
+            </svg>
+            Pinterest
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <!-- Column 2: Shop Links -->
+    <div class="footer__col">
+      <h4 class="footer__col-title">Shop</h4>
+      <ul class="footer__links">
+        <li><a href="{{ routes.collections_url }}/all">All Characters</a></li>
+        <li><a href="{{ routes.collections_url }}/new-arrivals">New Arrivals</a></li>
+        <li><a href="{{ routes.collections_url }}/best-sellers">Best Sellers</a></li>
+        <li><a href="/pages/sizing-guide">Sizing Guide</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Info Links -->
+    <div class="footer__col">
+      <h4 class="footer__col-title">Info</h4>
+      <ul class="footer__links">
+        <li><a href="/pages/about">About Antonio</a></li>
+        <li><a href="/pages/contact">Contact Us</a></li>
+        <li><a href="/policies/shipping-policy">Shipping</a></li>
+        <li><a href="/policies/refund-policy">Returns</a></li>
+        <li><a href="/policies/privacy-policy">Privacy Policy</a></li>
+        <li><a href="/policies/terms-of-service">Terms of Service</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Footer Bottom Bar -->
+  <div class="footer__bottom">
+    <p class="footer__copyright">{{ section.settings.copyright | default: shop.name | append: '. All rights reserved.' | prepend: '© 2024 ' }}</p>
+    <p class="footer__made-with">Made with 🖍️ by a 12-year-old</p>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "about_text",
+      "label": "About Text",
+      "default": "<p>A brand born from doodles, attitude, and a 12-year-old's imagination. Wear your weird.</p>"
+    },
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright Text"
+    }
+  ]
+}
+{% endschema %}
