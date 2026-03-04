@@ -1,0 +1,488 @@
+<!-- ============================================
+     DOODLETYPE — CHARACTERS PAGE
+     ============================================ -->
+
+<!-- PAGE HERO -->
+<section class="chars-hero">
+  <div class="chars-hero__inner">
+    <p class="chars-hero__eyebrow">{{ section.settings.eyebrow }}</p>
+    <h1 class="chars-hero__headline">
+      {{ section.settings.headline | replace: 'Characters', '<span class="chars-hero__headline-red">Characters</span>' }}
+    </h1>
+    <p class="chars-hero__subtext">{{ section.settings.subtext }}</p>
+  </div>
+
+  <!-- Marquee -->
+  <div class="chars-marquee">
+    <div class="chars-marquee__track">
+      <div class="chars-marquee__content">
+        <span>{{ section.settings.marquee_text }}</span>
+        <span>{{ section.settings.marquee_text }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARACTER GRID -->
+<section class="chars-grid-section">
+  <div class="chars-grid">
+
+    <!-- Annabelle Apple -->
+    <a href="/collections/all" class="char-card fade-in" style="animation-delay:0.00s">
+      <div class="char-card__image-wrap">
+        <img src="{{ 'Annabelle-Apple.png' | asset_url }}" alt="Annabelle Apple" class="char-card__image" loading="eager">
+        <div class="char-card__overlay">
+          <span class="char-card__badge">Shop Tee →</span>
+        </div>
+      </div>
+      <div class="char-card__info">
+        <h2 class="char-card__name">Annabelle <span class="char-card__emoji">🍎</span></h2>
+        <p class="char-card__tagline">"The holder of infinite things (in her purse)"</p>
+      </div>
+    </a>
+
+    <!-- Brian Broccoli -->
+    <a href="/collections/all" class="char-card fade-in" style="animation-delay:0.06s">
+      <div class="char-card__image-wrap">
+        <img src="{{ 'Brian-Broccoli.png' | asset_url }}" alt="Brian Broccoli" class="char-card__image" loading="eager">
+        <div class="char-card__overlay">
+          <span class="char-card__badge">Shop Tee →</span>
+        </div>
+      </div>
+      <div class="char-card__info">
+        <h2 class="char-card__name">Brian <span class="char-card__emoji">🥦</span></h2>
+        <p class="char-card__tagline">"Mad at everything. Still nutritious."</p>
+      </div>
+    </a>
+
+    <!-- Ethan Egg -->
+    <a href="/collections/all" class="char-card fade-in" style="animation-delay:0.12s">
+      <div class="char-card__image-wrap">
+        <img src="{{ 'Ethan-Egg.png' | asset_url }}" alt="Ethan Egg" class="char-card__image" loading="lazy">
+        <div class="char-card__overlay">
+          <span class="char-card__badge">Shop Tee →</span>
+        </div>
+      </div>
+      <div class="char-card__info">
+        <h2 class="char-card__name">Ethan <span class="char-card__emoji">🍳</span></h2>
+        <p class="char-card__tagline">"EEEEEEEEHHHHHHHHHHg"</p>
+      </div>
+    </a>
+
+    <!-- Martin Watermelon -->
+    <a href="/collections/all" class="char-card fade-in" style="animation-delay:0.18s">
+      <div class="char-card__image-wrap">
+        <img src="{{ 'Martin-Watermelon.png' | asset_url }}" alt="Martin Watermelon" class="char-card__image" loading="lazy">
+        <div class="char-card__overlay">
+          <span class="char-card__badge">Shop Tee →</span>
+        </div>
+      </div>
+      <div class="char-card__info">
+        <h2 class="char-card__name">Martin <span class="char-card__emoji">🍉</span></h2>
+        <p class="char-card__tagline">"Hates everything besides summer"</p>
+      </div>
+    </a>
+
+    <!-- Jim Jelly -->
+    <a href="/collections/all" class="char-card fade-in" style="animation-delay:0.24s">
+      <div class="char-card__image-wrap">
+        <img src="{{ 'Jim-Jelly.png' | asset_url }}" alt="Jim Jelly" class="char-card__image" loading="lazy">
+        <div class="char-card__overlay">
+          <span class="char-card__badge">Shop Tee →</span>
+        </div>
+      </div>
+      <div class="char-card__info">
+        <h2 class="char-card__name">Jim <span class="char-card__emoji">🍇</span></h2>
+        <p class="char-card__tagline">"Great grape jam Jim"</p>
+      </div>
+    </a>
+
+    <!-- Ian Ice Cube -->
+    <a href="/collections/all" class="char-card fade-in" style="animation-delay:0.30s">
+      <div class="char-card__image-wrap">
+        <img src="{{ 'Ian-Ice-Cube.png' | asset_url }}" alt="Ian Ice Cube" class="char-card__image" loading="lazy">
+        <div class="char-card__overlay">
+          <span class="char-card__badge">Shop Tee →</span>
+        </div>
+      </div>
+      <div class="char-card__info">
+        <h2 class="char-card__name">Ian <span class="char-card__emoji">🧊</span></h2>
+        <p class="char-card__tagline">"brrrr so cold"</p>
+      </div>
+    </a>
+
+    <!-- Kiran Kiwi -->
+    <a href="/collections/all" class="char-card fade-in" style="animation-delay:0.36s">
+      <div class="char-card__image-wrap">
+        <img src="{{ 'Kiran-Kiwi.png' | asset_url }}" alt="Kiran Kiwi" class="char-card__image" loading="lazy">
+        <div class="char-card__overlay">
+          <span class="char-card__badge">Shop Tee →</span>
+        </div>
+      </div>
+      <div class="char-card__info">
+        <h2 class="char-card__name">Kiran <span class="char-card__emoji">🥝</span></h2>
+        <p class="char-card__tagline">"He's from New Zealand"</p>
+      </div>
+    </a>
+
+    <!-- Steve Strawberry -->
+    <a href="/collections/all" class="char-card fade-in" style="animation-delay:0.42s">
+      <div class="char-card__image-wrap">
+        <img src="{{ 'Steve-Strawberry.png' | asset_url }}" alt="Steve Strawberry" class="char-card__image" loading="lazy">
+        <div class="char-card__overlay">
+          <span class="char-card__badge">Shop Tee →</span>
+        </div>
+      </div>
+      <div class="char-card__info">
+        <h2 class="char-card__name">Steve <span class="char-card__emoji">🍓</span></h2>
+        <p class="char-card__tagline">"Everyone's favorite flavor growing up"</p>
+      </div>
+    </a>
+
+    <!-- Peter Pepper -->
+    <a href="/collections/all" class="char-card fade-in" style="animation-delay:0.48s">
+      <div class="char-card__image-wrap">
+        <img src="{{ 'Peter-Pepper.png' | asset_url }}" alt="Peter Pepper" class="char-card__image" loading="lazy">
+        <div class="char-card__overlay">
+          <span class="char-card__badge">Shop Tee →</span>
+        </div>
+      </div>
+      <div class="char-card__info">
+        <h2 class="char-card__name">Peter <span class="char-card__emoji">🌶️</span></h2>
+        <p class="char-card__tagline">"fire"</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="chars-cta">
+  <div class="chars-cta__inner fade-in">
+    <h2 class="chars-cta__heading">{{ section.settings.cta_heading }}</h2>
+    <p class="chars-cta__subtext">{{ section.settings.cta_subtext }}</p>
+    <a href="{{ section.settings.cta_url | default: '/collections/all' }}" class="btn btn--primary btn--xl">
+      {{ section.settings.cta_text }}
+    </a>
+  </div>
+</section>
+
+<style>
+/* ---- Characters Page Hero ---- */
+.chars-hero {
+  background: var(--color-black);
+  padding: calc(var(--header-height) + 64px) 0 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.chars-hero__inner {
+  padding: 0 24px 64px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.chars-hero__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-red);
+  margin-bottom: 20px;
+}
+
+.chars-hero__headline {
+  font-family: var(--font-header);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  color: var(--color-white);
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+.chars-hero__headline-red {
+  color: var(--color-red);
+}
+
+.chars-hero__subtext {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* Marquee — reuses global marquee style but scoped here too */
+.chars-marquee {
+  background: var(--color-red);
+  overflow: hidden;
+  padding: 14px 0;
+  border-top: 3px solid rgba(0,0,0,0.1);
+}
+
+.chars-marquee__track {
+  display: flex;
+  white-space: nowrap;
+}
+
+.chars-marquee__content {
+  display: flex;
+  animation: marqueeScroll 25s linear infinite;
+}
+
+.chars-marquee__content span {
+  display: inline-block;
+  padding: 0 24px;
+  font-family: var(--font-header);
+  font-size: 1rem;
+  color: var(--color-white);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ---- Character Grid ---- */
+.chars-grid-section {
+  background: var(--color-cream);
+}
+
+.chars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-left: 2px solid var(--color-black);
+  border-top: 2px solid var(--color-black);
+}
+
+.char-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--color-cream);
+  border-right: 2px solid var(--color-black);
+  border-bottom: 2px solid var(--color-black);
+  transition: background var(--transition);
+  cursor: pointer;
+}
+
+.char-card__image-wrap {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.char-card__image {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+  transform-origin: center bottom;
+}
+
+.char-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26,26,26,0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.char-card:hover .char-card__overlay {
+  opacity: 1;
+}
+
+.char-card:hover .char-card__image {
+  transform: scale(1.1) rotate(4deg);
+}
+
+.char-card:hover {
+  background: var(--color-black);
+}
+
+.char-card__badge {
+  display: inline-block;
+  background: var(--color-red);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
+.char-card:hover .char-card__badge {
+  transform: scale(1.05);
+}
+
+.char-card__info {
+  padding: 24px 28px;
+  border-top: 2px solid var(--color-black);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.char-card:hover .char-card__info {
+  background: var(--color-black);
+  border-color: rgba(255,255,255,0.08);
+}
+
+.char-card__name {
+  font-family: var(--font-header);
+  font-size: 1.4rem;
+  line-height: 1.1;
+  margin-bottom: 6px;
+  color: var(--color-black);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color var(--transition);
+}
+
+.char-card:hover .char-card__name {
+  color: var(--color-white);
+}
+
+.char-card__emoji {
+  font-size: 1.2rem;
+}
+
+.char-card__tagline {
+  font-size: 0.85rem;
+  color: #777;
+  font-style: italic;
+  line-height: 1.5;
+  transition: color var(--transition);
+}
+
+.char-card:hover .char-card__tagline {
+  color: rgba(255,255,255,0.5);
+}
+
+/* ---- Bottom CTA ---- */
+.chars-cta {
+  background: var(--color-black);
+  padding: 120px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.chars-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,60,60,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.chars-cta__inner {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.chars-cta__heading {
+  font-family: var(--font-header);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: var(--color-white);
+  margin-bottom: 14px;
+  line-height: 1.05;
+}
+
+.chars-cta__subtext {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 44px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .chars-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .chars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chars-hero__headline {
+    font-size: 2.5rem;
+  }
+
+  .char-card__info {
+    padding: 20px;
+  }
+
+  .char-card__name {
+    font-size: 1.2rem;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Characters Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Section Label",
+      "default": "THE CREW"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Page Headline",
+      "default": "Meet the Characters"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "9 originals. All hand-drawn. All with way too much personality."
+    },
+    {
+      "type": "text",
+      "id": "marquee_text",
+      "label": "Marquee Text",
+      "default": "ANNABELLE ✦ BRIAN ✦ ETHAN ✦ MARTIN ✦ JIM ✦ IAN ✦ KIRAN ✦ STEVE ✦ PETER ✦"
+    },
+    {
+      "type": "header",
+      "content": "Bottom CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "CTA Heading",
+      "default": "Can't pick just one?"
+    },
+    {
+      "type": "text",
+      "id": "cta_subtext",
+      "label": "CTA Subtext",
+      "default": "We get it. Browse the full collection."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Shop All Characters"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA Button URL"
+    }
+  ]
+}
+{% endschema %}
