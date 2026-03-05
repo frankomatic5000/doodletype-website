@@ -1,0 +1,122 @@
+<section class="contact-hero">
+  <div class="container">
+    <p class="contact-hero__eyebrow">GET IN TOUCH</p>
+    <h1 class="contact-hero__heading">Contact Us</h1>
+    <p class="contact-hero__sub">Questions about sizing, orders, or just want to say hi? We got you.</p>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="container container--narrow">
+    <div class="contact-inner">
+
+      <div class="contact-form-wrap fade-in">
+        {%- form 'contact', id: 'ContactForm' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="contact-success">
+              <p>Message sent! We will get back to you soon.</p>
+            </div>
+          {%- else -%}
+
+            {%- if form.errors -%}
+              <div class="contact-errors">
+                <p>Please fix the following:</p>
+                <ul>
+                  {%- for field in form.errors -%}
+                    <li>{{ field }} — {{ form.errors.messages[field] }}</li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+
+            <div class="contact-field">
+              <label for="ContactForm-name">Name</label>
+              <input
+                type="text"
+                id="ContactForm-name"
+                name="contact[name]"
+                value="{{ form.name }}"
+                placeholder="Your name"
+                autocomplete="name"
+              >
+            </div>
+
+            <div class="contact-field">
+              <label for="ContactForm-email">Email <span class="required">*</span></label>
+              <input
+                type="email"
+                id="ContactForm-email"
+                name="contact[email]"
+                value="{{ form.email }}"
+                placeholder="your@email.com"
+                required
+                autocomplete="email"
+              >
+            </div>
+
+            <div class="contact-field">
+              <label for="ContactForm-subject">Subject</label>
+              <select id="ContactForm-subject" name="contact[subject]">
+                <option value="">Select a topic...</option>
+                <option value="Order question">Order question</option>
+                <option value="Sizing help">Sizing help</option>
+                <option value="Returns & exchanges">Returns &amp; exchanges</option>
+                <option value="Wholesale / collab">Wholesale / collab</option>
+                <option value="Just saying hi">Just saying hi</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="contact-field">
+              <label for="ContactForm-body">Message <span class="required">*</span></label>
+              <textarea
+                id="ContactForm-body"
+                name="contact[body]"
+                rows="6"
+                placeholder="What's on your mind?"
+                required
+              >{{ form.body }}</textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--large btn--full">
+              Send Message
+            </button>
+
+          {%- endif -%}
+        {%- endform -%}
+      </div>
+
+      <div class="contact-info fade-in fade-in--delay">
+        <div class="contact-info__item">
+          <h3>Orders & Shipping</h3>
+          <p>Orders ship within 3–5 business days. You will get a tracking number by email once it ships.</p>
+        </div>
+        <div class="contact-info__item">
+          <h3>Returns</h3>
+          <p>Not happy? We offer easy 30-day returns on unworn items. Just reach out and we will sort it.</p>
+        </div>
+        <div class="contact-info__item">
+          <h3>Response Time</h3>
+          <p>We typically reply within 1–2 business days. Thanks for your patience.</p>
+        </div>
+        <div class="contact-info__item">
+          <h3>Sizing Questions</h3>
+          <p>Check the <a href="/pages/sizing-guide">Sizing Guide</a> first — it covers everything. Still unsure? Just ask.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Page",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Contact Page"
+    }
+  ]
+}
+{% endschema %}
