@@ -18,8 +18,7 @@
       "type": "character-grid",
       "settings": {
         "heading": "More Characters",
-        "subheading": "Pick another one.",
-        "limit": 3
+        "subheading": "Pick another one."
       }
     }
   },

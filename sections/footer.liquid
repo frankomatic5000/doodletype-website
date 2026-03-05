@@ -7,7 +7,7 @@
         {{ shop.name }}
       </a>
       <div class="footer__about">
-        {{ section.settings.about_text | default: '<p>A brand born from doodles, attitude, and a 12-year-old\'s imagination. Wear your weird.</p>' }}
+        {{ section.settings.about_text }}
       </div>
       <div class="footer__social">
         {%- if settings.social_tiktok != blank -%}
