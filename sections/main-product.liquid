@@ -39,13 +39,15 @@
 
         <h1 class="product-info__title">{{ product.title }}</h1>
 
-        {%- assign taglines = "The holder of infinite things (in her purse),Mad at everything. Still nutritious.,EEEEEEEEHHHHHHHHHHg,Hates everything besides summer,Great grape jam Jim,brrrr so cold,He's from New Zealand,Everyone's favorite flavor growing up,fire" | split: ',' -%}
-        {%- assign char_handles = 'annabelle-apple,brian-broccoli,ethan-egg,martin-watermelon,jim-jelly,ian-ice-cube,kiran-kiwi,steve-strawberry,peter-pepper' | split: ',' -%}
-        {%- assign char_index = char_handles | index: product.handle -%}
-        {%- if char_index -%}
-          <p class="product-info__tagline">"{{ taglines[char_index] }}"</p>
-        {%- elsif product.metafields.custom.tagline != blank -%}
-          <p class="product-info__tagline">"{{ product.metafields.custom.tagline }}"</p>
+        {%- assign prod_tagline = product.metafields.custom.tagline -%}
+        {%- if prod_tagline == blank -%}
+          {%- assign title_parts = product.title | split: ' - ' -%}
+          {%- if title_parts.size > 1 -%}
+            {%- assign prod_tagline = title_parts | last -%}
+          {%- endif -%}
+        {%- endif -%}
+        {%- if prod_tagline != blank -%}
+          <p class="product-info__tagline">"{{ prod_tagline }}"</p>
         {%- endif -%}
 
         <div class="product-info__price">
