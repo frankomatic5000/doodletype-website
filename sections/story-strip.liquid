@@ -23,17 +23,11 @@
             loading="lazy"
           >
         {%- else -%}
-          <div class="story-strip__placeholder">
-            <div class="story-strip__sketch-lines">
-              <div class="sketch-line"></div>
-              <div class="sketch-line"></div>
-              <div class="sketch-line sketch-line--short"></div>
-              <div class="sketch-circle"></div>
-              <div class="sketch-line sketch-line--short"></div>
-              <div class="sketch-line"></div>
-            </div>
-            <p class="story-strip__placeholder-text">Antonio's original sketches</p>
-          </div>
+          <img
+            src="{{ 'Antonio-originalSketches.png' | asset_url }}"
+            alt="Antonio's original sketches"
+            loading="lazy"
+          >
         {%- endif -%}
         {%- if section.settings.image_caption != blank -%}
           <p class="story-strip__caption">{{ section.settings.image_caption }}</p>
